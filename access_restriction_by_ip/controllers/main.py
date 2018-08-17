@@ -48,7 +48,7 @@ class Home(main.Home):
             values['databases'] = None
         if request.httprequest.method == 'POST':
             old_uid = request.uid
-            ip_address = request.httprequest.environ['REMOTE_ADDR']
+            ip_address = request.httprequest.environ['HTTP_X_FORWARD_FOR']
             if request.params['login']:
                 user_rec = request.env['res.users'].sudo().search([('login', '=', request.params['login'])])
                 if user_rec.allowed_ips:
